@@ -28,10 +28,6 @@ public class Startup
         services.AddSwaggerGen(c =>
         {
             c.SwaggerDoc("v1", new OpenApiInfo());
-            c.ResolveConflictingActions(apiDescriptions => apiDescriptions.First());
-            c.IgnoreObsoleteActions();
-            c.IgnoreObsoleteProperties();
-            c.CustomSchemaIds(type => type.FullName);
         });
     }
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
