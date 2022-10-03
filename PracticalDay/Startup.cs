@@ -21,8 +21,8 @@ public class Startup
     public void ConfigureServices(IServiceCollection services)
     {
         services.AddScoped<IAccountDatabase, AccountDatabase>();
-        services.AddDbContext<AccountContext>(
-            o => o.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+        services.AddDbContext<ContextDb>(
+            o => o.UseSqlite("Data source=authors.db"));
         services.AddControllers();
         services.AddSwaggerGen(c =>
         {

@@ -1,10 +1,12 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System.ComponentModel.DataAnnotations;
+using Microsoft.EntityFrameworkCore;
 
 namespace PracticalDay.Model;
 
-[Keyless]
+
 public class AccountModel
 {
+    [Key]
     public Guid UserId { get; set; }
     
     public String Username { get; set;}
