@@ -1,5 +1,8 @@
-﻿namespace PracticalDay.Model;
+﻿using Microsoft.EntityFrameworkCore;
 
+namespace PracticalDay.Model;
+
+[Keyless]
 public class AccountModel
 {
     public Guid UserId { get; set; }
@@ -7,5 +10,5 @@ public class AccountModel
     public String Username { get; set;}
     
     public String Password { get; set;}
-
+    
 }
