@@ -20,6 +20,7 @@ public class Startup
 
     public void ConfigureServices(IServiceCollection services)
     {
+       
         services.AddScoped<IAccountDatabase, AccountDatabase>();
         services.AddDbContext<ContextDb>(
             o => o.UseSqlite("Data source=authors.db"));
@@ -27,6 +28,10 @@ public class Startup
         services.AddSwaggerGen(c =>
         {
             c.SwaggerDoc("v1", new OpenApiInfo());
+            c.ResolveConflictingActions(apiDescriptions => apiDescriptions.First());
+            c.IgnoreObsoleteActions();
+            c.IgnoreObsoleteProperties();
+            c.CustomSchemaIds(type => type.FullName);
         });
     }
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

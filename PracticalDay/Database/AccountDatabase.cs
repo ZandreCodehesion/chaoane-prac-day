@@ -14,9 +14,7 @@ public class AccountDatabase : IAccountDatabase
     {
         _contextDb = contextDb;       
     }
-
-
-
+    
     public async Task<AccountModel> Create(AccountModel accountModel)
     {
         AccountModel user = new AccountModel();
@@ -25,7 +23,9 @@ public class AccountDatabase : IAccountDatabase
 
         user.Password = accountModel.Password;
 
-        user.Username = user.Username;
+        user.Username = accountModel.Username;
+        
+        
         _contextDb.AccountModel.Add(user);
         await _contextDb.SaveChangesAsync();
         return user;

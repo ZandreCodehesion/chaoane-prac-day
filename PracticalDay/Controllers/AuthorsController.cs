@@ -24,14 +24,13 @@ public class AuthorsController : ControllerBase
     }
 
     [HttpGet("{id}")]
-    [Route("/Authors")]
     public async Task<AuthorsModel> Get(Guid id)
     {
         return await authors.Get(id);
     }
     
     [HttpDelete("{id}")]
-    [Route("/Authors")]
+
     public async Task<EntityEntry<AuthorsModel>> Delete(Guid guid)
     {
         return await authors.Delete(guid);

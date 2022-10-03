@@ -12,12 +12,11 @@ public class AccountController : ControllerBase
 
     private readonly IAccountDatabase account;
     
-    private readonly ITokensDatabase tokensDatabase;
     
-    public AccountController(IAccountDatabase _account,ITokensDatabase _tokensDatabase)
+    public AccountController(IAccountDatabase _account)
     {
         account=_account;
-        tokensDatabase = _tokensDatabase;
+       
     }      
     
     [HttpGet]
