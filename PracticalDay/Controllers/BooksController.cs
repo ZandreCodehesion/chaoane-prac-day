@@ -16,7 +16,6 @@ public class BooksController : ControllerBase
     }
     
     [HttpPost]
-    [Route("/Books")]
     public async Task<ActionResult<BooksModel>> Create(BooksModel booksModel)
     {
         return await _book.Create(booksModel);

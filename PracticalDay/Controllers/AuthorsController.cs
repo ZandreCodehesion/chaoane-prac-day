@@ -27,4 +27,12 @@ public class AuthorsController : ControllerBase
     {
         return await _authors.Delete(guid);
     }
+    [HttpGet]
+    public async Task<IEnumerable<AuthorsModel>> Get()
+    {
+        return await _authors.Get();
+    }
+    
+    
+    
 }

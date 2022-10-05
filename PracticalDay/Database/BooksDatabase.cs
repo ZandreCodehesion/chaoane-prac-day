@@ -14,13 +14,13 @@ public class BooksDatabase : IBooksDatabase
     
     public async Task<BooksModel> Create(BooksModel books)
     {
+        
         var authors = _contextDb.AuthorsModel.Find(books.Author);
         var user = _contextDb.AccountModel.Find(books.UserId);
         
+       
         if (authors != null && user != null)
         {
-
-
             BooksModel book = new BooksModel();
 
             book.BookId = new Guid();
@@ -29,7 +29,7 @@ public class BooksDatabase : IBooksDatabase
 
             book.CopiesSold = books.CopiesSold;
 
-            book.Publisher = book.Publisher;
+            book.Publisher = books.Publisher;
 
             book.BookName = books.BookName;
 

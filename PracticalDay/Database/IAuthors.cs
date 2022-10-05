@@ -8,5 +8,7 @@ public interface IAuthors
     Task<AuthorsModel?> Create(AuthorsModel authorsModel);
     Task<AuthorsModel> Get(Guid guid);
     Task<bool> Delete(Guid guid);
+    Task<IEnumerable<AuthorsModel>> Get();
+    
     
 }

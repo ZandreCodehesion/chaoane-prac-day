@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.ChangeTracking;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
 using PracticalDay.Model;
 
 namespace PracticalDay.Database;
@@ -52,6 +53,11 @@ public class AuthorsDatabase : IAuthors
         }
         _authorContext.AuthorsModel.Remove(author);
         return true;
+    }
+
+    public async Task<IEnumerable<AuthorsModel>> Get()
+    {
+        return await _authorContext.AuthorsModel.ToListAsync();
     }
 }
 

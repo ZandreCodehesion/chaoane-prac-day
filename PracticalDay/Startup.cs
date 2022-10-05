@@ -20,6 +20,7 @@ public class Startup
 
     public void ConfigureServices(IServiceCollection services)
     {
+        services.AddScoped<IBooksDatabase,BooksDatabase>();
         services.AddScoped<IAuthors, AuthorsDatabase>();
         services.AddScoped<IAccountDatabase, AccountDatabase>();
         services.AddDbContext<ContextDb>(
