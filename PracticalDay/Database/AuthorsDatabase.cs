@@ -15,7 +15,9 @@ public class AuthorsDatabase : IAuthors
 
     public async Task<AuthorsModel> Create(AuthorsModel author)
     {
+        Console.WriteLine("JJJJJJJJJJJkkkkkkkkkkkkkkkk");
         var user = authorContext.AccountModel.Find(author.CreatedBy);
+       Console.WriteLine("JJJJJJJJJJJ");
         if (user != null )
         {
             AuthorsModel authors = new AuthorsModel();

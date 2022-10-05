@@ -27,26 +27,16 @@ public class AccountController : ControllerBase
 
 
     [HttpPost]
-    [Route("Accounts/register")]
+    [Route("register")]
     public async Task<ActionResult<AccountModel>> Create(AccountModel accountModel)
     {
         return await account.Create(accountModel);
     }
     
-   /* [HttpPost]
-    [Route("Accounts/login")]
-    public async Task<ActionResult<AccountModel>> Login(AccountModel accountModel)
+    [HttpPost]
+    [Route("Login")]
+    public  AuthResponse Login(AccountModel accountModel)
     {
-        var token = tokensDatabase.Authenticate(accountModel);
-        if (token == null)
-        {
-            return Unauthorized();
-        }
-
-        return accountModel;
-    }*/
-    
-    
-    
-   
+        return account.Login(accountModel);
+    }
 }

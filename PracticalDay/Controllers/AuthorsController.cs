@@ -17,9 +17,9 @@ public class AuthorsController : ControllerBase
        
     }
     [HttpPost]
-    [Route("/Authors")]
     public async Task<ActionResult<AuthorsModel>> Create(AuthorsModel accountModel)
     {
+        Console.WriteLine("JJJJJJJJJJJkkkkkkkkkkkkkkkklllllll");
         return await authors.Create(accountModel);
     }
 
