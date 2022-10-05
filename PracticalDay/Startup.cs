@@ -20,7 +20,7 @@ public class Startup
 
     public void ConfigureServices(IServiceCollection services)
     {
-       
+        services.AddScoped<IAuthors, AuthorsDatabase>();
         services.AddScoped<IAccountDatabase, AccountDatabase>();
         services.AddDbContext<ContextDb>(
             o => o.UseSqlite("Data source=authors.db"));

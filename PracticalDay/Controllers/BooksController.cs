@@ -8,38 +8,36 @@ namespace PracticalDay.Controllers;
 [Route("api/[controller]")]
 public class BooksController : ControllerBase
 {
-    private readonly IBooksDatabase book;
+    private readonly IBooksDatabase _book;
 
-    public BooksController(IBooksDatabase _books)
+    public BooksController(IBooksDatabase books)
     {
-        book=_books;
-       
+        _book=books;
     }
+    
     [HttpPost]
     [Route("/Books")]
     public async Task<ActionResult<BooksModel>> Create(BooksModel booksModel)
     {
-        return await book.Create(booksModel);
+        return await _book.Create(booksModel);
     }
 
     [HttpGet("{AuthorId}")]
     public async Task<BooksModel> Get(Guid id)
     {
-        return await book.Get(id);
+        return await _book.Get(id);
     }
     
-  [HttpGet("{AuthorsId}/{BooksId}")]
-    public async Task<BooksModel> Get(Guid AuthorsId,Guid BooksId)
+    [HttpGet("{authorsId}/{booksId}")]
+    public async Task<BooksModel> Get(Guid authorsId,Guid booksId)
     {
-        return await book.Get(AuthorsId,BooksId);
+        return await _book.Get(authorsId,booksId);
     }
-    
-    
     
     [HttpGet]
     public async Task<IEnumerable<BooksModel>> Get()
     {
-        return await book.Get();
+        return await _book.Get();
     }
     
     

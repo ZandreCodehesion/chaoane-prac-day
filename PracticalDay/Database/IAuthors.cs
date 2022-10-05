@@ -5,8 +5,8 @@ namespace PracticalDay.Database;
 
 public interface IAuthors
 {
-    Task<AuthorsModel> Create(AuthorsModel authorsModel);
+    Task<AuthorsModel?> Create(AuthorsModel authorsModel);
     Task<AuthorsModel> Get(Guid guid);
-    Task<EntityEntry<AuthorsModel>> Delete(Guid guid);
+    Task<bool> Delete(Guid guid);
     
 }

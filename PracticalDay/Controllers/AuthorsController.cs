@@ -9,31 +9,22 @@ namespace PracticalDay.Controllers;
 [Route("api/[controller]")]
 public class AuthorsController : ControllerBase
 {
-    private readonly IAuthors authors;
-
-    public AuthorsController(IAuthors _authors)
+    private readonly IAuthors _authors;
+    public AuthorsController(IAuthors authors)
     {
-        authors=_authors;
-       
+        this._authors=authors;
     }
     [HttpPost]
-    public async Task<ActionResult<AuthorsModel>> Create(AuthorsModel accountModel)
-    {
-        Console.WriteLine("JJJJJJJJJJJkkkkkkkkkkkkkkkklllllll");
-        return await authors.Create(accountModel);
-    }
+    public async Task<ActionResult<AuthorsModel>> Create(AuthorsModel accountModel) => await _authors.Create(accountModel) ?? throw new InvalidOperationException();
 
-    [HttpGet("{id}")]
+    [HttpGet("{AuthorId}")]
     public async Task<AuthorsModel> Get(Guid id)
     {
-        return await authors.Get(id);
+        return await _authors.Get(id);
     }
-    
-    [HttpDelete("{id}")]
-
-    public async Task<EntityEntry<AuthorsModel>> Delete(Guid guid)
+    [HttpDelete("{AuthorId}")]
+    public async Task<bool> Delete(Guid guid)
     {
-        return await authors.Delete(guid);
+        return await _authors.Delete(guid);
     }
-
 }

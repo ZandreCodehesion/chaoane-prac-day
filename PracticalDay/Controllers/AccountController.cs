@@ -16,16 +16,14 @@ public class AccountController : ControllerBase
     public AccountController(IAccountDatabase _account)
     {
         account=_account;
-       
-    }      
+    }
     
     [HttpGet]
     public async Task<IEnumerable<AccountModel>> Get()
     {
         return await account.Get();
     }
-
-
+    
     [HttpPost]
     [Route("register")]
     public async Task<ActionResult<AccountModel>> Create(AccountModel accountModel)
@@ -34,7 +32,7 @@ public class AccountController : ControllerBase
     }
     
     [HttpPost]
-    [Route("Login")]
+    [Route("Login")] 
     public  AuthResponse Login(AccountModel accountModel)
     {
         return account.Login(accountModel);

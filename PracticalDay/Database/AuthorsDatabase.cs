@@ -5,19 +5,18 @@ namespace PracticalDay.Database;
 
 public class AuthorsDatabase : IAuthors
 {
-    private readonly ContextDb authorContext;
+    private readonly ContextDb _authorContext;
 
-    public AuthorsDatabase(ContextDb _authorContext)
+    public AuthorsDatabase(ContextDb authorContext)
     {
-        authorContext = _authorContext;
+        this._authorContext = authorContext;
     }
 
 
-    public async Task<AuthorsModel> Create(AuthorsModel author)
+    public async Task<AuthorsModel?> Create(AuthorsModel author)
     {
-        Console.WriteLine("JJJJJJJJJJJkkkkkkkkkkkkkkkk");
-        var user = authorContext.AccountModel.Find(author.CreatedBy);
-       Console.WriteLine("JJJJJJJJJJJ");
+        var user = _authorContext.AccountModel.Find(author.CreatedBy);
+       
         if (user != null )
         {
             AuthorsModel authors = new AuthorsModel();
@@ -31,8 +30,8 @@ public class AuthorsDatabase : IAuthors
 
             authors.CreatedBy = user.UserId;
             
-            authorContext.AuthorsModel.Add(authors);
-            await authorContext.SaveChangesAsync();
+            _authorContext.AuthorsModel.Add(authors);
+            await _authorContext.SaveChangesAsync();
             return authors;
         }
         
@@ -41,17 +40,18 @@ public class AuthorsDatabase : IAuthors
 
     public async Task<AuthorsModel> Get(Guid id)
     {
-        return (await authorContext.AuthorsModel.FindAsync(id))!;
+        return (await _authorContext.AuthorsModel.FindAsync(id))!;
     }
 
-    public async Task<EntityEntry<AuthorsModel>> Delete(Guid guid)
+    public async Task<bool> Delete(Guid guid)
     {
-        var author = authorContext.AuthorsModel.Find(guid);
+        var author = _authorContext.AuthorsModel.Find(guid);
         if (author == null)
         {
-            return null;
+            return false;
         }
-        return authorContext.AuthorsModel.Remove(author);
+        _authorContext.AuthorsModel.Remove(author);
+        return true;
     }
 }
 

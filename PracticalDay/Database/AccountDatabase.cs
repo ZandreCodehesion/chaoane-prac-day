@@ -42,12 +42,9 @@ public class AccountDatabase : IAccountDatabase
 
     public AuthResponse Login(AccountModel accountModel)
     {
-        Console.WriteLine("Smoked Weed");
         
         var users = _contextDb.AccountModel.Find(accountModel.UserId);
-        
-        Console.WriteLine("Weed is smoking");
-        
+
         if (users.Username != accountModel.Username && users.Password != accountModel.Password)
         {
             return null;
